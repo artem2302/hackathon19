@@ -11,6 +11,7 @@ import models from "./models";
 import passport from "./services/passport";
 
 import companyCtrl from "./controllers/company.controller";
+import applicationCtrl from "./controllers/application.controller";
 
 mongoose.connect(config.mongoHost);
 
@@ -54,13 +55,19 @@ app.post('/register', asyncHandler(async function (req, res, next) {
 }));
 
 app.post('/company', asyncHandler(companyCtrl.create));
+app.get('/company', asyncHandler(companyCtrl.all));
 app.get('/company/:id', asyncHandler(companyCtrl.load))
 app.put('/company/:id', asyncHandler(companyCtrl.update));
 app.delete('/company/:id', asyncHandler(companyCtrl.remove));
 
+app.get('/application', asyncHandler(applicationCtrl.all));
+app.get('/application/:id', asyncHandler(applicationCtrl.load))
+app.put('/application/:id', asyncHandler(applicationCtrl.update));
+app.delete('/application/:id', asyncHandler(applicationCtrl.remove));
+
 //protected routes
 app.use(passport.authenticate('jwt', { session: false }));
-app.get('/company', asyncHandler(companyCtrl.all));
+app.post('/application', asyncHandler(applicationCtrl.create));
 
 
 app.listen(config.port, () => console.log("Server listening on " + config.port));

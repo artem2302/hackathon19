@@ -10,6 +10,16 @@ const Company = new mongoose.Schema({
     address: {
         type: mongoose.Schema.Types.String,
         required: true
+    },
+    ratingCount: {
+        type: mongoose.Schema.Types.Number,
+        required: true,
+        default: 0
+    },
+    avgRating: {
+        type: mongoose.Schema.Types.Number,
+        required: true,
+        default: 5
     }
 });
 
