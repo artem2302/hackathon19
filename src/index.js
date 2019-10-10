@@ -53,11 +53,14 @@ app.post('/register', asyncHandler(async function (req, res, next) {
     res.json(user)
 }));
 
-app.get('/company', asyncHandler(companyCtrl.all));
 app.post('/company', asyncHandler(companyCtrl.create));
 app.get('/company/:id', asyncHandler(companyCtrl.load))
 app.put('/company/:id', asyncHandler(companyCtrl.update));
 app.delete('/company/:id', asyncHandler(companyCtrl.remove));
+
+//protected routes
+app.use(passport.authenticate('jwt', { session: false }));
+app.get('/company', asyncHandler(companyCtrl.all));
 
 
 app.listen(config.port, () => console.log("Server listening on " + config.port));

@@ -46,8 +46,9 @@ async function remove(req, res) {
 }
 
 async function all(req, res) {
+    console.log(req.user)
     const regex = new RegExp(`.*${req.query.name}.*`, "i");
-    let companies = await Company.find({ name: regex });
+    let companies = await Company.find(req.query.name ? { name: regex } : {});
     if (!companies || !companies.length) {
         return res.status(404)
             .json({
