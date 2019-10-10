@@ -10,6 +10,8 @@ import config from "./config";
 import models from "./models";
 import passport from "./services/passport";
 
+import companyCtrl from "./controllers/company.controller";
+
 mongoose.connect(config.mongoHost);
 
 const app = express();
@@ -51,6 +53,11 @@ app.post('/register', asyncHandler(async function (req, res, next) {
     res.json(user)
 }));
 
+app.get('/company', asyncHandler(companyCtrl.all));
+app.post('/company', asyncHandler(companyCtrl.create));
+app.get('/company/:id', asyncHandler(companyCtrl.load))
+app.put('/company/:id', asyncHandler(companyCtrl.update));
+app.delete('/company/:id', asyncHandler(companyCtrl.remove));
 
 
 app.listen(3030, () => console.log("Server listening on 3030"));

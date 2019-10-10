@@ -34,6 +34,11 @@ const User = new mongoose.Schema({
     },
     phoneNumber: {
         type: String
+    },
+    role: {
+        type: mongoose.Schema.Types.String,
+        enum: ["admin", "user", "company"],
+        required: true
     }
 
 });
