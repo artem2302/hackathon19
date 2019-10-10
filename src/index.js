@@ -60,4 +60,4 @@ app.put('/company/:id', asyncHandler(companyCtrl.update));
 app.delete('/company/:id', asyncHandler(companyCtrl.remove));
 
 
-app.listen(3030, () => console.log("Server listening on 3030"));
+app.listen(config.port, () => console.log("Server listening on " + config.port));
