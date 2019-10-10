@@ -37,5 +37,4 @@ const Application = new mongoose.Schema({
     }
 });
 
-
 export default mongoose.model("Application", Application);

@@ -4,7 +4,7 @@ const Application = mongoose.model("Application");
 const Company = mongoose.model("Company");
 
 async function create(req, res) {
-    const company = await Company.findById(req.body.company);
+    const company = await Company.findByLocation(req.body.location);
     if (!company) {
         return res.status(404)
             .json({

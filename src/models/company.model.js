@@ -23,5 +23,10 @@ const Company = new mongoose.Schema({
     }
 });
 
+Company.statics.findByLocation = function findByLocation(location) {
+    //TO BE DONE, currently as is:
+    return this.findOne();
+};
+
 
 export default mongoose.model("Company", Company);
