@@ -59,7 +59,13 @@ async function remove(req, res) {
 }
 
 async function all(req, res) {
-    const regex = new RegExp(`.*${req.query.description}.*`, "i");
+    let queryParams = {};
+    if (req.query.description) {
+        queryParams.description = new RegExp(`.*${req.query.description}.*`, "i");
+    }
+    if (req.query.user) {
+        queryParams.user = req.query.user;
+    }
     let applications = await Application.find(req.query.description ? { description: regex } : {});
     if (!applications || !applications.length) {
         return res.status(404)

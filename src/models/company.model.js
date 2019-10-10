@@ -20,6 +20,9 @@ const Company = new mongoose.Schema({
         type: mongoose.Schema.Types.Number,
         required: true,
         default: 5
+    },
+    coverage: {
+        type: [[mongoose.Schema.Types.Number]]
     }
 });
 
