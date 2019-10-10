@@ -30,6 +30,10 @@ const Application = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
+    },
+    location: {
+        type: [mongoose.Schema.Types.Number],
+        required: true
     }
 });
 
