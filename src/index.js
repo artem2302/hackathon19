@@ -61,6 +61,8 @@ app.get('/company', asyncHandler(companyCtrl.all));
 app.get('/company/:id', asyncHandler(companyCtrl.load))
 app.put('/company/:id', asyncHandler(companyCtrl.update));
 app.delete('/company/:id', asyncHandler(companyCtrl.remove));
+app.post('/company/:id/rate', asyncHandler(companyCtrl.rate));
+
 
 app.get('/application', asyncHandler(applicationCtrl.all));
 app.get('/application/:id', asyncHandler(applicationCtrl.load))

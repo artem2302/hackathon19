@@ -12,10 +12,7 @@ async function create(req, res) {
                 message: "Company not found"
             });
     }
-    company.ratingCount++;
-    company.avgRating = (company.avgRating * (company.ratingCount - 1) + req.body.rating) / (company.ratingCount * 1.0);
     req.body.user = req.user._id;
-    await company.save();
     let application = new Application(req.body);
     await application.save();
     return res.json({
@@ -23,6 +20,7 @@ async function create(req, res) {
         model: application
     });
 }
+
 
 async function update(req, res) {
     let application = await Application.findById(req.params.id);

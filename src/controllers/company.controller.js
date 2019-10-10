@@ -76,10 +76,29 @@ async function load(req, res) {
     });
 }
 
+async function rate(req, res) {
+    const company = await Company.findByLocation(req.body.location);
+    if (!company) {
+        return res.status(404)
+            .json({
+                error: true,
+                message: "Company not found"
+            });
+    }
+    company.ratingCount++;
+    company.avgRatingSpeed = (company.avgRatingSpeed * (company.ratingCount - 1) + req.body.ratingSpeed) / (company.ratingCount * 1.0);
+    await company.save();
+    return res.json({
+        error: false,
+        model: company
+    });
+}
+
 export default {
     create,
     update,
     remove,
     all,
-    load
+    load,
+    rate
 }
