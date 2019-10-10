@@ -28,6 +28,9 @@ const Company = new mongoose.Schema({
     },
     coverage: {
         type: [[mongoose.Schema.Types.Number]]
+    },
+    phone: {
+        type: mongoose.Schema.Types.String
     }
 });
 
