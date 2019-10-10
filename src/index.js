@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import asyncHandler from "express-async-handler";
 import bodyParser from "body-parser";
 import cookieParser from 'cookie-parser';
+import cors from "cors";
 
 import config from "./config";
 import models from "./models";
@@ -22,6 +23,7 @@ const User = mongoose.model("User");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors())
 
 app.post('/login', function (req, res, next) {
 
