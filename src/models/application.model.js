@@ -19,7 +19,7 @@ const Application = new mongoose.Schema({
     },
     rating: {
         type: mongoose.Schema.Types.Number,
-        required: true,
+      // required: true,
         min: 1,
         max: 5
     },

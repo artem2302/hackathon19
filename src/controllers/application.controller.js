@@ -13,6 +13,7 @@ async function create(req, res) {
             });
     }
     req.body.user = req.user._id;
+    req.body.company = company._id;
     let application = new Application(req.body);
     await application.save();
     return res.json({
