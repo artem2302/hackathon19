@@ -31,6 +31,13 @@ const Company = new mongoose.Schema({
     },
     phone: {
         type: mongoose.Schema.Types.String
+    },
+    status: {
+        type: mongoose.Schema.Types.String,
+        enum: ["pending", "accepted", "declined", "resolved"]
+    },
+    comment: {
+        type: mongoose.Schema.Types.String
     }
 });
 
