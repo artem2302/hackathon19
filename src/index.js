@@ -20,8 +20,8 @@ const app = express();
 const router = express.Router();
 const User = mongoose.model("User");
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb', extended: true})),
+app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 app.use(cookieParser());
 app.use(cors())
 
